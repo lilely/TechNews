@@ -1,5 +1,5 @@
 //
-//  HomeContentView.swift
+//  AbourtMeContentView.swift
 //  TechNews
 //
 //  Created by 星金 on 2020/1/22.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct HomeContentView: View {
+struct AbourtMeContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        Text("Abourt Me!")
     }
 }
 
-struct HomeContentView_Previews: PreviewProvider {
+struct AbourtMeContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeContentView()
+        AbourtMeContentView()
     }
 }
