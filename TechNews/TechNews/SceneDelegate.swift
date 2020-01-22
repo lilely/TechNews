@@ -25,8 +25,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            //window.rootViewController = UIHostingController(rootView: contentView)
             
+            let rootTabbarItems = [
+                RootTabbarItem("首页", { () -> (UIHostingController<HomeContentView>) in
+                    UIHostingController(rootView: HomeContentView())
+                }),
+                RootTabbarItem("关注", { () -> (UIHostingController<ContentView>) in
+                    UIHostingController(rootView: contentView)
+                }),
+                RootTabbarItem("推送", { () -> (UIHostingController<ContentView>) in
+                    UIHostingController(rootView: contentView)
+                }),
+                RootTabbarItem("我", { () -> (UIHostingController<ContentView>) in
+                    UIHostingController(rootView: contentView)
+                })
+            ]
+            
+            window.rootViewController = RootTabbarViewController(items: rootTabbarItems)
             self.window = window
             window.makeKeyAndVisible()
         }
