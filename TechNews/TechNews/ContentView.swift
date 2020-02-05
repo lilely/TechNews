@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            HomeContentView().environmentObject(FeedDatas()).tabItem({
+            HomeContentView().environmentObject(FeedSimpleData()).tabItem({
                 Image(systemName: "123")
                 Text("首页")
             }).tag(0)

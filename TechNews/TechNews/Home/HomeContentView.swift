@@ -9,25 +9,16 @@
 import SwiftUI
 
 struct HomeContentView: View {
-    @EnvironmentObject private var feedData: FeedDatas
+    @EnvironmentObject private var feedData: FeedSimpleData
     
-    var body: some View {
-//        NavigationView {
-//            ZStack {
-//                Color.red
-//                NavigationLink {
-//                    Text("123")
-//                }
-//            }
-//       }.navigationBarTitle("Home").edgesIgnoringSafeArea(.all)
-        
+    var body: some View {  
         NavigationView {
             List {
-                ForEach(feedData.feeds) { feedModel in
+                ForEach(self.feedData.feedSimples) { feedSimple in
                     NavigationLink(
                         destination: FollowContentView()
                     ) {
-                        FeedContentRow(feedModel: feedModel)
+                        FeedContentRow(feedModel: feedSimple)
                     }
                 }
             }
@@ -37,13 +28,16 @@ struct HomeContentView: View {
             }, label: {
                 Text("Right").foregroundColor(.orange)
             }))
-        }
-        
+        }.onAppear(perform: refresh)
+    }
+    
+    func refresh() {
+        self.feedData.refreshFeedSimple()
     }
 }
 
 struct HomeContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeContentView().environmentObject(FeedDatas())
+        HomeContentView().environmentObject(FeedSimpleData())
     }
 }
