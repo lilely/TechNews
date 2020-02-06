@@ -35,10 +35,11 @@ struct FeedContentRow: View {
                         .foregroundColor(.gray)
                     }
                     .resizable()
-                    .shadow(radius: 25)
                     .frame(width: 50, height: 50)
                     .cornerRadius(25)
+                    .shadow(radius: 2.5)
                     Text("\(feedModel.author?.username ?? "noname")")
+                    .font(.headline)
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                     
                 }
