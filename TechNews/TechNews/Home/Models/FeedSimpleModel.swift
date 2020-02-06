@@ -17,6 +17,7 @@ struct FeedSimpleModel: Hashable, Codable, Identifiable {
     var original: String?
     var original_url: String?
     var title: String = ""
+    var content: String?
     var author: Author?
     var created_at: String?
     var updated_at: String?
@@ -51,6 +52,7 @@ struct FeedSimpleModel: Hashable, Codable, Identifiable {
                                original: dic["original"] as? String,
                                original_url: dic["original_url"] as? String,
                                title: dic["title"] as! String,
+                               content: dic["content"] as? String,
                                author: author,
                                created_at: dic["created_at"] as? String,
                                updated_at: dic["updated_at"] as? String) }
