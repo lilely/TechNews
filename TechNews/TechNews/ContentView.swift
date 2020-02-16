@@ -13,24 +13,29 @@ struct ContentView: View {
     var body: some View {
         TabView {
             HomeContentView().environmentObject(FeedSimpleData()).tabItem({
-                Image(systemName: "123")
+                Image(systemName: "square.stack.3d.down.right")
                 Text("首页")
             }).tag(0)
             
             FollowContentView().tabItem({
-                Image(systemName: "321")
+                Image(systemName: "person.3")
                 Text("关注")
             }).tag(1)
             
-            RecommendContentView().tabItem({
-                Image(systemName: "1213")
-                Text("推荐")
+            SearchContentView().tabItem({
+                Image(systemName: "magnifyingglass")
+                Text("搜索")
             }).tag(2)
             
-            AbourtMeContentView().tabItem({
-                Image(systemName: "333")
-                Text("我")
+            RecommendContentView().tabItem({
+                Image(systemName: "paperplane")
+                Text("新闻")
             }).tag(3)
+            
+            AbourtMeContentView().tabItem({
+                Image(systemName: "person")
+                Text("我")
+            }).tag(4)
         }
     }
 }

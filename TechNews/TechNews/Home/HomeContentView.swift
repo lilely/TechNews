@@ -11,18 +11,21 @@ import SwiftUI
 struct HomeContentView: View {
     @EnvironmentObject private var feedData: FeedSimpleData
     
-    var body: some View {  
+    init() {
+        UINavigationBar.appearance().backgroundColor = .white
+    }
+    
+    var body: some View {
         NavigationView {
-            List {
-                ForEach(self.feedData.feedSimples) { feedSimple in
-                    NavigationLink(
-                        destination: FollowContentView()
-                    ) {
-                        FeedContentRow(feedModel: feedSimple)
-                    }
+            List(self.feedData.feedSimples) {
+                feedSimple in
+                NavigationLink(
+                    destination: FeedDetailView()
+                ) {
+                    FeedContentRow(feedModel: feedSimple)
                 }
             }
-            .navigationBarTitle("Home")
+            .navigationBarTitle(Text("首页"))
             .navigationBarItems(trailing: Button(action: {
                 print("Tap")
             }, label: {

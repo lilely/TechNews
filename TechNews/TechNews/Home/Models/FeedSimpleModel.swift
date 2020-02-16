@@ -11,7 +11,7 @@ import Foundation
 struct FeedSimpleModel: Hashable, Codable, Identifiable {
     
     var id: Int?
-    var feed_id: String?
+    var feedID: String?
     var from: String
     var tag_name: String
     var original: String?
@@ -26,7 +26,7 @@ struct FeedSimpleModel: Hashable, Codable, Identifiable {
         guard let lhs_id = lhs.id, let rhs_id = rhs.id else {
             return false
         }
-        guard let lhs_feedID = lhs.feed_id, let rhs_feedID = rhs.feed_id else {
+        guard let lhs_feedID = lhs.feedID, let rhs_feedID = rhs.feedID else {
             return false
         }
         return (lhs_id == rhs_id) && (lhs_feedID == rhs_feedID)
@@ -46,7 +46,7 @@ struct FeedSimpleModel: Hashable, Codable, Identifiable {
         }
         
         return FeedSimpleModel(id: dic["Id"] as? Int,
-                               feed_id: dic["feedID"] as? String,
+                               feedID: dic["feedID"] as? String,
                                from: dic["from"] as? String ?? "no where",
                                tag_name: dic["tag_name"] as? String ?? "no tag",
                                original: dic["original"] as? String,

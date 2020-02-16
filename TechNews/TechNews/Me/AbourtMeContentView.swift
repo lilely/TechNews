@@ -9,8 +9,12 @@
 import SwiftUI
 
 struct AbourtMeContentView: View {
+    
     var body: some View {
-        Text("Abourt Me!")
+        NavigationView {
+            Text("Abourt Me!")
+            .navigationBarTitle(Text("个人信息"))
+        }
     }
 }
 

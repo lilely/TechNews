@@ -35,23 +35,13 @@ final class FeedSimpleData: ObservableObject {
                 return
             }
             do {
-                if let json = try JSONSerialization.jsonObject(with: data , options: []) as? NSDictionary {
-                    if case let status as Int = json["status"], status == 0 {
-                        if case let feedArry as Array<NSDictionary> = json["data"] {
-                            let feedModels =
-                            feedArry.filter{
-                                $0 is Dictionary<String, Any>
-                            }.map {
-                                FeedSimpleModel.initFeedSimple(with: $0 as! Dictionary<String, Any>)
-                            }
-                            DispatchQueue.main.async {
-                                self.feedSimples = feedModels
-                            }
+                if let response = try? JSONDecoder().decode(HTTPFeedSimpleResponse.self,from:data ) {
+                    if let objects = response.data {
+                        DispatchQueue.main.async {
+                            self.feedSimples = objects
                         }
                     }
                 }
-            } catch {
-                print(error)
             }
         }
     }
