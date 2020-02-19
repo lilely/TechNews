@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct HomeContentView: View {
     @EnvironmentObject private var feedData: FeedSimpleData
-    
+    @State private var isShowing = false
     init() {
         UINavigationBar.appearance().backgroundColor = .white
     }
@@ -25,6 +26,12 @@ struct HomeContentView: View {
                     FeedContentRow(feedModel: feedSimple)
                 }
             }
+            .pullToRefresh(isShowing: $isShowing, onRefresh: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isShowing = false
+                }
+                self.refresh()
+            })
             .navigationBarTitle(Text("首页"))
             .navigationBarItems(trailing: Button(action: {
                 print("Tap")
