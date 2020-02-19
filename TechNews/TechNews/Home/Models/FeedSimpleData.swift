@@ -34,12 +34,10 @@ final class FeedSimpleData: ObservableObject {
             guard let data = response.data else {
                 return
             }
-            do {
-                if let response = try? JSONDecoder().decode(HTTPFeedSimpleResponse.self,from:data ) {
-                    if let objects = response.data {
-                        DispatchQueue.main.async {
-                            self.feedSimples = objects
-                        }
+            if let response = try? JSONDecoder().decode(HTTPFeedSimpleResponse.self,from:data ) {
+                if let objects = response.data {
+                    DispatchQueue.main.async {
+                        self.feedSimples = objects
                     }
                 }
             }
