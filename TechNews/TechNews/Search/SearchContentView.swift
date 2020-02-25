@@ -64,6 +64,8 @@ struct SearchContentView: View {
                     }
                     .navigationBarTitle(Text("搜索"))
                     .resignKeyboardOnDragGesture()
+                } else {
+                    Spacer()
                 }
             }
             .onAppear(perform: {
