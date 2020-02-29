@@ -22,7 +22,7 @@ final class FeedSearchData: ObservableObject {
             "keyWord": key,
             "userID": "guoyingying07"
         ]
-        TNNetworkAPIRequest<SearchResultModel>(originUrl, .get)
+        TNNetworkAPIRequest<SearchResultModel>(originUrl, .post)
             .data(bodyDic)
             .start{ (searchResult,error) -> Void in
                 if let error = error {
