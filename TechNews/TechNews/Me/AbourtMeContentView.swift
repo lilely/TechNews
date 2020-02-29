@@ -12,7 +12,13 @@ struct AbourtMeContentView: View {
     
     var body: some View {
         NavigationView {
-            Text("Abourt Me!")
+            Form {
+                HostProfileView().environmentObject(Profile())
+                Section {
+                  Text("Abourt Me!")
+                }
+            }
+            
             .navigationBarTitle(Text("个人信息"))
         }
     }
