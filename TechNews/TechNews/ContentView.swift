@@ -32,7 +32,8 @@ struct ContentView: View {
                 Text("新闻")
             }).tag(3)
             
-            AbourtMeContentView().tabItem({
+            LoginContentView().environmentObject(LoginData())
+                .tabItem({
                 Image(systemName: "person")
                 Text("我")
             }).tag(4)

@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct HTTPFeedSimpleResponse: Codable {
+struct HTTPResponse<T: Codable>: Codable {
     let status: Int
     let message: String
-    let data: [FeedSimpleModel]?
+    let data: T?
 }

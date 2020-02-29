@@ -11,36 +11,21 @@ import Alamofire
 
 final class FeedSimpleData: ObservableObject {
     
-    @Published var feedSimples = [FeedSimpleModel]()
+    @Published var feedSimples: [FeedSimpleModel]?
+    
+    @Published var error : Error?
     
     func refreshFeedSimple() {
         let originUrl = "https://localhost:8181/feed_list/tag/推荐"
-        let charSet = NSMutableCharacterSet()
-        charSet.formUnion(with: CharacterSet.urlQueryAllowed)
-        charSet.addCharacters(in: "#")
-        guard let encodingURL = originUrl.addingPercentEncoding(withAllowedCharacters: charSet as CharacterSet) else {
-            return
-        }
-    
-        guard let url = URL(string:encodingURL) else {
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 10 // 10 secs
-        Alamofire.request(request).responseJSON {
-            response in
-            guard let data = response.data else {
-                return
-            }
-            if let response = try? JSONDecoder().decode(HTTPFeedSimpleResponse.self,from:data ) {
-                if let objects = response.data {
-                    DispatchQueue.main.async {
-                        self.feedSimples = objects
-                    }
+        TNNetworkAPIRequest<[FeedSimpleModel]>(originUrl, .get)
+            .start{ (feedSimples,error) -> Void in
+                if let error = error {
+                    print(error)
+                    self.error = error
+                } else {
+                    print("fetch feeds Success!")
+                    self.feedSimples = feedSimples
                 }
-            }
         }
     }
 }

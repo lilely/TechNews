@@ -18,7 +18,7 @@ struct HomeContentView: View {
     
     var body: some View {
         NavigationView {
-            List(self.feedData.feedSimples) {
+            List(self.feedData.feedSimples ?? []) {
                 feedSimple in
                 NavigationLink(
                     destination: FeedDetailView()
