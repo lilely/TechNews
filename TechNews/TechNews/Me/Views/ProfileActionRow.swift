@@ -9,15 +9,23 @@
 import SwiftUI
 
 struct ProfileActionRow: View {
+    var item: ProfileActionItem
     var body: some View {
         HStack {
-            Text("Hello, World!")
+            HStack {
+                Image(systemName: item.icon)
+                Text(item.title)
+            }
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+            Spacer()
+            Text(item.descript ?? "")
+                .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
         }
     }
 }
 
 struct ProfileActionRow_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileActionRow()
+        ProfileActionRow(item: ProfileActionItem(icon: "person", title: "message", descript: "hello"))
     }
 }

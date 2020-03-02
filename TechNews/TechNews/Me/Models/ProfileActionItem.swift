@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct ProfileActionItem: Identifiable{
+    var id: Int?
+    
+    var icon: String
+    var title: String
+    var descript: String?
+}

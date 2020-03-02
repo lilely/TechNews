@@ -10,16 +10,32 @@ import SwiftUI
 
 struct AbourtMeContentView: View {
     
+    let group0ActionItems : [ProfileActionItem] = [ProfileActionItem(id: 0, icon: "message", title: "消息", descript: "进入消息"),
+                                                   ProfileActionItem(id:1, icon: "list.dash", title: "消息", descript: "进入消息")]
+    
+    let group1ActionItems : [ProfileActionItem] = [ProfileActionItem(id: 0, icon: "flame", title: "设置", descript: "进入设置"),
+    ProfileActionItem(id:1, icon: "gear", title: "设置", descript: "进入设置")]
+    
     var body: some View {
         NavigationView {
             Form {
                 HostProfileView().environmentObject(Profile())
+                ForEach(group0ActionItems) { actionItem in
+                    ProfileActionRow(item: actionItem)
+                }
                 Section {
-                  Text("Abourt Me!")
+                    ForEach(group1ActionItems) { actionItem in
+                        ProfileActionRow(item: actionItem)
+                    }
                 }
             }
-            
             .navigationBarTitle(Text("个人信息"))
+            .navigationBarItems(trailing:NavigationLink(
+                destination: LoginContentView().environmentObject(LoginData())
+
+            ){
+                Text("登录")
+            })
         }
     }
 }
