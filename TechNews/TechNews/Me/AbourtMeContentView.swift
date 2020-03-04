@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct AbourtMeContentView: View {
-    
+    @State private var gotoLogin: Bool = false
+    let loginData: LoginData = LoginData()
     let group0ActionItems : [ProfileActionItem] = [ProfileActionItem(id: 0, icon: "message", title: "消息", descript: "进入消息"),
                                                    ProfileActionItem(id:1, icon: "list.dash", title: "消息", descript: "进入消息")]
     
@@ -30,11 +31,24 @@ struct AbourtMeContentView: View {
                 }
             }
             .navigationBarTitle(Text("个人信息"))
-            .navigationBarItems(trailing:NavigationLink(
-                destination: LoginContentView().environmentObject(LoginData())
-
-            ){
-                Text("登录")
+            .navigationBarItems(trailing:
+                HStack {
+                    if self.loginData.loginModel == nil {
+                        Button(action: {
+                            self.gotoLogin = true
+                        }) {
+                            Text("登录/注册")
+                        }.sheet(isPresented: self.$gotoLogin) {
+                            LoginContentView().environmentObject(self.loginData)
+                        }
+                        
+                    } else {
+                        Button(action: {
+                            
+                        }) {
+                            Text("已登录")
+                        }
+                    }
             })
         }
     }

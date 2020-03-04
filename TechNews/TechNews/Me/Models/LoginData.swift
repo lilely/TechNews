@@ -15,7 +15,7 @@ final class LoginData: ObservableObject {
     
     @Published var error: Error?
     
-    func login(withAccount accountID: String,andPassword password: String) {
+    func login(withAccount accountID: String,andPassword password: String,_ completion: @escaping (LoginModel?, Error?)->Void) {
         
         let originUrl = "https://localhost:8181/user/signin"
         let bodyDic = [
@@ -28,14 +28,20 @@ final class LoginData: ObservableObject {
                 if let loginModel = loginModel {
                     print("Login Success!")
                     self.loginModel = loginModel
+                    completion(loginModel,nil)
                 } else {
                     print(error ?? "Unkonw error")
                     self.error = error
+                    completion(nil,error)
                 }
         }
     }
     
-    func register(withAccount accountID: String,andPassword password: String) {
+    func logout(withAccount accountID: String, _ completion: @escaping (LoginModel?, Error?)->Void) {
+        
+    }
+    
+    func register(withAccount accountID: String,andPassword password: String, _ completion: @escaping (LoginModel?, Error?)->Void) {
         let originUrl = "https://localhost:8181/user/signup"
         let bodyDic = [
             "account": accountID,
@@ -47,9 +53,11 @@ final class LoginData: ObservableObject {
                 if let loginModel = loginModel {
                     print("Register Success!")
                     self.loginModel = loginModel
+                    completion(loginModel,nil)
                 } else {
                     print(error ?? "Unkonw error")
                     self.error = error
+                    completion(nil,error)
                 }
         }
     }

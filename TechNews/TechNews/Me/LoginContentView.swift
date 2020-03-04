@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LoginContentView: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject private var loginData: LoginData
     @State private var inputAccountID = ""
     @State private var inputPassword = ""
@@ -112,9 +113,13 @@ struct LoginContentView: View {
 
             Button(action: {
                 if self.isRegister {
-                    self.loginData.register(withAccount: self.inputAccountID, andPassword: self.inputPassword)
+                    self.loginData.register(withAccount: self.inputAccountID, andPassword: self.inputPassword, { (loginModel, error) -> Void in
+                        self.presentationMode.wrappedValue.dismiss()
+                    })
                 } else {
-                    self.loginData.login(withAccount: self.inputAccountID, andPassword: self.inputPassword)
+                    self.loginData.login(withAccount: self.inputAccountID, andPassword: self.inputPassword, { (loginModel, error) -> Void in
+                        self.presentationMode.wrappedValue.dismiss()
+                    })
                 }
             }) {
                 Image(systemName: "chevron.right.circle")
