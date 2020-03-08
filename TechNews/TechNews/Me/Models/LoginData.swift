@@ -12,6 +12,8 @@ final class AccountData: ObservableObject {
     
     @Published var account: Account?
     
+    @Published var followers: Followers?
+    
     func login(withAccount accountID: String,andPassword password: String,_ completion: @escaping (Account?, Error?)->Void) {
         
         let originUrl = "https://localhost:8181/user/signin"
@@ -25,6 +27,7 @@ final class AccountData: ObservableObject {
                 if let account = account {
                     print("Login Success!")
                     self.account = account
+                    self.account?.username = accountID
                     completion(account,nil)
                 } else {
                     print(error ?? "Unkonw error")
@@ -49,6 +52,7 @@ final class AccountData: ObservableObject {
                 if let account = account {
                     print("Register Success!")
                     self.account = account
+                    self.account?.username = accountID
                     completion(account,nil)
                 } else {
                     print(error ?? "Unkonw error")
@@ -57,4 +61,40 @@ final class AccountData: ObservableObject {
         }
     }
     
+    func isFollowed(author username: String?) -> Bool {
+        guard let authorName = username else {
+            return false
+        }
+        
+        guard let followers = self.followers else {
+            return false
+        }
+        for followerName in followers.followAuthors ?? [] {
+            if authorName == followerName {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func fetchFollowers(_ completion: @escaping (Followers?, Error?)-> Void) {
+        guard let username = self.account?.username else {
+            completion(nil,nil)
+            return
+        }
+        let originUrl = "https://localhost:8181/followers";
+        let body = ["userID":username]
+        TNNetworkAPIRequest<Followers>(originUrl, .post)
+            .data(body)
+            .start{ (followers,error) -> Void in
+            if let followers = followers {
+                print("fetch followers Success!")
+                self.followers = followers
+                completion(followers,nil)
+            } else {
+                print(error ?? "Unkonw error")
+                completion(nil,error)
+            }
+        }
+    }
 }

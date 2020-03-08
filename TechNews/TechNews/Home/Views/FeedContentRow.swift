@@ -10,6 +10,9 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct FeedContentRow: View {
+    
+    var accountData: AccountData
+    
     var feedModel: FeedSimpleModel
     
     var avatarUrl: URL {
@@ -41,7 +44,21 @@ struct FeedContentRow: View {
                     Text("\(feedModel.author?.username ?? "noname")")
                     .font(.headline)
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-                    
+                    Spacer()
+                    Button(action:{
+                        print("123123123123123123")
+                    }){
+                        if self.accountData.isFollowed(author: self.feedModel.author?.username) {
+                            Text("取消关注")
+                        } else {
+                            Text("关注")
+                        }
+                    }
+                    .foregroundColor(Color.white)
+                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                    .background(Color.orange)
+                    .cornerRadius(7)
+                    .buttonStyle(BorderlessButtonStyle())
                 }
                 .padding(EdgeInsets(top: 10, leading: 5, bottom: 5, trailing: 5))
                 Text("\(feedModel.title)")
@@ -60,6 +77,6 @@ struct FeedContentRow_Previews: PreviewProvider {
     static var previews: some View {
         let author = Author(id: 1, role: "Guest", avatarHd: "", avatarLarge: "", username: "haha侠")
         let feedModel: FeedSimpleModel = FeedSimpleModel(id: 1, feedID: "1", from: "juejin", tag_name: "推荐", original: "", original_url: "", title: "吃饭", content:"blablabla",author: author, created_at: "111", updated_at: "222")
-        return FeedContentRow(feedModel: feedModel)
+        return FeedContentRow(accountData: AccountData(), feedModel: feedModel)
     }
 }

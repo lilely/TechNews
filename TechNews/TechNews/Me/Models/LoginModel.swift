@@ -12,6 +12,8 @@ struct Account : Codable{
     
     typealias Token = String
     
+    var username: String
+    
     var accessToken: Token
     var expireTime: TimeInterval?
     var refreshToken: Token?

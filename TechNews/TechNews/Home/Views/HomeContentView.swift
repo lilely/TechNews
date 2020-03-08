@@ -11,7 +11,7 @@ import SwiftUIRefresh
 
 struct HomeContentView: View {
     @EnvironmentObject private var feedData: FeedSimpleData
-    @EnvironmentObject private var followData: FollowData
+    @EnvironmentObject private var accountData: AccountData
     @State private var isShowing = false
     
     init() {
@@ -25,7 +25,7 @@ struct HomeContentView: View {
                 NavigationLink(
                     destination: FeedDetailView()
                 ) {
-                    FeedContentRow(feedModel: feedSimple)
+                    FeedContentRow(accountData: self.accountData, feedModel: feedSimple)
                 }
             }
             .pullToRefresh(isShowing: $isShowing, onRefresh: {
