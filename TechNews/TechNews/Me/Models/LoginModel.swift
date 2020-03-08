@@ -8,17 +8,11 @@
 
 import Foundation
 
-struct LoginModel : Codable{
+struct Account : Codable{
     
     typealias Token = String
     
     var accessToken: Token
     var expireTime: TimeInterval?
     var refreshToken: Token?
-}
-
-struct HTTPLoginModelResponse: Codable {
-    let status: Int
-    let message: String
-    let data: LoginModel
 }

@@ -8,24 +8,24 @@
 
 import Foundation
 
-final class LoginData: ObservableObject {
+final class AccountData: ObservableObject {
     
-    @Published var loginModel: LoginModel?
+    @Published var account: Account?
     
-    func login(withAccount accountID: String,andPassword password: String,_ completion: @escaping (LoginModel?, Error?)->Void) {
+    func login(withAccount accountID: String,andPassword password: String,_ completion: @escaping (Account?, Error?)->Void) {
         
         let originUrl = "https://localhost:8181/user/signin"
         let bodyDic = [
             "account": accountID,
             "password": password
         ]
-        TNNetworkAPIRequest<LoginModel>(originUrl, .post)
+        TNNetworkAPIRequest<Account>(originUrl, .post)
             .data(bodyDic)
-            .start{ (loginModel,error) -> Void in
-                if let loginModel = loginModel {
+            .start{ (account,error) -> Void in
+                if let account = account {
                     print("Login Success!")
-                    self.loginModel = loginModel
-                    completion(loginModel,nil)
+                    self.account = account
+                    completion(account,nil)
                 } else {
                     print(error ?? "Unkonw error")
                     completion(nil,error)
@@ -33,23 +33,23 @@ final class LoginData: ObservableObject {
         }
     }
     
-    func logout(withAccount accountID: String, _ completion: @escaping (LoginModel?, Error?)->Void) {
+    func logout(withAccount accountID: String, _ completion: @escaping (Account?, Error?)->Void) {
         
     }
     
-    func register(withAccount accountID: String,andPassword password: String, _ completion: @escaping (LoginModel?, Error?)->Void) {
+    func register(withAccount accountID: String,andPassword password: String, _ completion: @escaping (Account?, Error?)->Void) {
         let originUrl = "https://localhost:8181/user/signup"
         let bodyDic = [
             "account": accountID,
             "password": password
         ]
-        TNNetworkAPIRequest<LoginModel>(originUrl, .post)
+        TNNetworkAPIRequest<Account>(originUrl, .post)
             .data(bodyDic)
-            .start { (loginModel,error) in
-                if let loginModel = loginModel {
+            .start { (account,error) in
+                if let account = account {
                     print("Register Success!")
-                    self.loginModel = loginModel
-                    completion(loginModel,nil)
+                    self.account = account
+                    completion(account,nil)
                 } else {
                     print(error ?? "Unkonw error")
                     completion(nil,error)

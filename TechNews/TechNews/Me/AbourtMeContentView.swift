@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AbourtMeContentView: View {
     @State private var gotoLogin: Bool = false
-    let loginData: LoginData = LoginData()
+    let accountData: AccountData = AccountData()
     let group0ActionItems : [ProfileActionItem] = [ProfileActionItem(id: 0, icon: "message", title: "消息", descript: "进入消息"),
                                                    ProfileActionItem(id:1, icon: "list.dash", title: "消息", descript: "进入消息")]
     
@@ -33,13 +33,13 @@ struct AbourtMeContentView: View {
             .navigationBarTitle(Text("个人信息"))
             .navigationBarItems(trailing:
                 HStack {
-                    if self.loginData.loginModel == nil {
+                    if self.accountData.account == nil {
                         Button(action: {
                             self.gotoLogin = true
                         }) {
                             Text("登录/注册")
                         }.sheet(isPresented: self.$gotoLogin) {
-                            LoginContentView().environmentObject(self.loginData)
+                            LoginContentView().environmentObject(self.accountData)
                         }
                         
                     } else {
