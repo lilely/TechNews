@@ -7,13 +7,10 @@
 //
 
 import Foundation
-import Alamofire
 
 final class LoginData: ObservableObject {
     
     @Published var loginModel: LoginModel?
-    
-    @Published var error: Error?
     
     func login(withAccount accountID: String,andPassword password: String,_ completion: @escaping (LoginModel?, Error?)->Void) {
         
@@ -31,7 +28,6 @@ final class LoginData: ObservableObject {
                     completion(loginModel,nil)
                 } else {
                     print(error ?? "Unkonw error")
-                    self.error = error
                     completion(nil,error)
                 }
         }
@@ -56,7 +52,6 @@ final class LoginData: ObservableObject {
                     completion(loginModel,nil)
                 } else {
                     print(error ?? "Unkonw error")
-                    self.error = error
                     completion(nil,error)
                 }
         }

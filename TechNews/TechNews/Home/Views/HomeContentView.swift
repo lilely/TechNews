@@ -11,7 +11,9 @@ import SwiftUIRefresh
 
 struct HomeContentView: View {
     @EnvironmentObject private var feedData: FeedSimpleData
+    @EnvironmentObject private var followData: FollowData
     @State private var isShowing = false
+    
     init() {
         UINavigationBar.appearance().backgroundColor = .white
     }
