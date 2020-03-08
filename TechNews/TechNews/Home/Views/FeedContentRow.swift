@@ -25,6 +25,10 @@ struct FeedContentRow: View {
         }
     }
     
+    var isFollowed: Bool {
+        return self.accountData.isFollowed(author: self.feedModel.author?.username)
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -45,20 +49,22 @@ struct FeedContentRow: View {
                     .font(.headline)
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                     Spacer()
-                    Button(action:{
-                        print("123123123123123123")
-                    }){
-                        if self.accountData.isFollowed(author: self.feedModel.author?.username) {
-                            Text("取消关注")
-                        } else {
-                            Text("关注")
+                    if (self.accountData.account != nil) {
+                        Button(action:{
+                            print("123123123123123123")
+                        }){
+                            if self.isFollowed {
+                                Text("取消关注")
+                            } else {
+                                Text("关注")
+                            }
                         }
+                        .foregroundColor(Color.white)
+                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                        .background(Color.orange)
+                        .cornerRadius(7)
+                        .buttonStyle(BorderlessButtonStyle())
                     }
-                    .foregroundColor(Color.white)
-                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
-                    .background(Color.orange)
-                    .cornerRadius(7)
-                    .buttonStyle(BorderlessButtonStyle())
                 }
                 .padding(EdgeInsets(top: 10, leading: 5, bottom: 5, trailing: 5))
                 Text("\(feedModel.title)")
