@@ -13,8 +13,8 @@
 		6670B28223E86BC9003E383F /* FeedSimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B28123E86BC9003E383F /* FeedSimpleData.swift */; };
 		6670B28423E86C55003E383F /* FeedAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B28323E86C55003E383F /* FeedAuthor.swift */; };
 		6670B28623EED9A2003E383F /* FeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B28523EED9A1003E383F /* FeedDetailView.swift */; };
-		66B177DD2408A45A00BCDF31 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177DC2408A45A00BCDF31 /* LoginData.swift */; };
-		66B177DF2408A4FD00BCDF31 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177DE2408A4FD00BCDF31 /* LoginModel.swift */; };
+		66B177DD2408A45A00BCDF31 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177DC2408A45A00BCDF31 /* AccountData.swift */; };
+		66B177DF2408A4FD00BCDF31 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177DE2408A4FD00BCDF31 /* Account.swift */; };
 		66B177E1240A56B300BCDF31 /* TNNetworkAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177E0240A56B300BCDF31 /* TNNetworkAPIRequest.swift */; };
 		66B177E3240A8E6400BCDF31 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177E2240A8E6400BCDF31 /* Profile.swift */; };
 		66B177E6240A90F700BCDF31 /* HostProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177E5240A90F700BCDF31 /* HostProfileView.swift */; };
@@ -59,8 +59,8 @@
 		6670B28123E86BC9003E383F /* FeedSimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSimpleData.swift; sourceTree = "<group>"; };
 		6670B28323E86C55003E383F /* FeedAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAuthor.swift; sourceTree = "<group>"; };
 		6670B28523EED9A1003E383F /* FeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailView.swift; sourceTree = "<group>"; };
-		66B177DC2408A45A00BCDF31 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
-		66B177DE2408A4FD00BCDF31 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		66B177DC2408A45A00BCDF31 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
+		66B177DE2408A4FD00BCDF31 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		66B177E0240A56B300BCDF31 /* TNNetworkAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNetworkAPIRequest.swift; sourceTree = "<group>"; };
 		66B177E2240A8E6400BCDF31 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		66B177E5240A90F700BCDF31 /* HostProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProfileView.swift; sourceTree = "<group>"; };
@@ -134,8 +134,8 @@
 		66E7362624089EEC00FCB8CC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				66B177DC2408A45A00BCDF31 /* LoginData.swift */,
-				66B177DE2408A4FD00BCDF31 /* LoginModel.swift */,
+				66B177DC2408A45A00BCDF31 /* AccountData.swift */,
+				66B177DE2408A4FD00BCDF31 /* Account.swift */,
 				66B177E2240A8E6400BCDF31 /* Profile.swift */,
 				66B177E9240A95EE00BCDF31 /* ProfileActionItem.swift */,
 			);
@@ -449,7 +449,7 @@
 				E285B12023D7ED6B00092814 /* HomeContentView.swift in Sources */,
 				66FF103023FC36B000F11397 /* FeedSearchData.swift in Sources */,
 				E285398323D822FF00AFC176 /* SearchContentView.swift in Sources */,
-				66B177DF2408A4FD00BCDF31 /* LoginModel.swift in Sources */,
+				66B177DF2408A4FD00BCDF31 /* Account.swift in Sources */,
 				E285B12223D7F61C00092814 /* Constants.swift in Sources */,
 				66B177E8240A959E00BCDF31 /* ProfileActionRow.swift in Sources */,
 				66B177EA240A95EE00BCDF31 /* ProfileActionItem.swift in Sources */,
@@ -462,7 +462,7 @@
 				66EBF10123D73DA1007E3202 /* ContentView.swift in Sources */,
 				66FF102A23F97E8600F11397 /* HTTPResponse.swift in Sources */,
 				66B177E1240A56B300BCDF31 /* TNNetworkAPIRequest.swift in Sources */,
-				66B177DD2408A45A00BCDF31 /* LoginData.swift in Sources */,
+				66B177DD2408A45A00BCDF31 /* AccountData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

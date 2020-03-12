@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct AbourtMeContentView: View {
+    @EnvironmentObject private var accountData: AccountData
     @State private var gotoLogin: Bool = false
-    let accountData: AccountData = AccountData()
+    
     let group0ActionItems : [ProfileActionItem] = [ProfileActionItem(id: 0, icon: "message", title: "消息", descript: "进入消息"),
                                                    ProfileActionItem(id:1, icon: "list.dash", title: "消息", descript: "进入消息")]
     

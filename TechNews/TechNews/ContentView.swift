@@ -10,9 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     
+    let accountData = AccountData()
+    
     var body: some View {
         TabView {
-            HomeContentView().environmentObject(FeedSimpleData()).environmentObject(AccountData()).tabItem({
+            HomeContentView().environmentObject(FeedSimpleData()).environmentObject(accountData).tabItem({
                 Image(systemName: "square.stack.3d.down.right")
                 Text("首页")
             }).tag(0)
@@ -32,7 +34,7 @@ struct ContentView: View {
                 Text("新闻")
             }).tag(3)
             
-            AbourtMeContentView()
+            AbourtMeContentView().environmentObject(accountData)
                 .tabItem({
                 Image(systemName: "person")
                 Text("我")
