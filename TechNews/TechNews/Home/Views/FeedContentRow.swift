@@ -51,9 +51,13 @@ struct FeedContentRow: View {
                     Spacer()
                     if (self.accountData.account != nil && feedModel.author?.username != nil) {
                         Button(action:{
-                            self.accountData.startFollow(author: self.feedModel.author!.username, { error in
-                                print(error ?? "Unkonw error")
+                            if self.isFollowed {
+                                
+                            } else {
+                                self.accountData.startFollow(author: self.feedModel.author!.username, { error in
+                                    print(error ?? "Unkonw error")
                                 })
+                            }
                         }){
                             if self.isFollowed {
                                 Text("取消关注")
