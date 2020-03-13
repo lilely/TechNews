@@ -12,7 +12,7 @@ final class AccountData: ObservableObject {
     
     @Published var account: Account?
     
-    @Published var followers: Followers?
+    @Published var followers: Followers = Followers()
     
     func login(withAccount accountID: String,andPassword password: String,_ completion: @escaping (Account?, Error?)->Void) {
         
@@ -65,11 +65,8 @@ final class AccountData: ObservableObject {
         guard let authorName = username else {
             return false
         }
-        
-        guard let followers = self.followers else {
-            return false
-        }
-        for followerName in followers.followAuthors ?? [] {
+
+        for followerName in followers.followAuthors {
             if authorName == followerName {
                 return true
             }
@@ -94,6 +91,28 @@ final class AccountData: ObservableObject {
             } else {
                 print(error ?? "Unkonw error")
                 completion(nil,error)
+            }
+        }
+    }
+    
+    func startFollow(author authorName: String,_ completion: @escaping (Error?)-> Void) {
+        guard let username = self.account?.username else {
+            completion(nil)
+            return
+        }
+        let originUrl = "https://localhost:8181/follow/author";
+        let body = ["userID":username,
+                    "followAuthors":[authorName]] as [String : Any]
+        TNNetworkAPIRequest<Empty>(originUrl, .post)
+            .data(body)
+            .start{ (empty,error) -> Void in
+            if error == nil {
+                self.followers.followAuthors.insert(authorName)
+                print("post followers Success!")
+                completion(nil)
+            } else {
+                print(error ?? "Unkonw error")
+                completion(error)
             }
         }
     }

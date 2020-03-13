@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Empty: Codable{
+    
+}
+
 struct HTTPResponse<T: Codable>: Codable {
     let status: Int
     let message: String

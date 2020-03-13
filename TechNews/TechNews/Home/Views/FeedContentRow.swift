@@ -11,7 +11,7 @@ import KingfisherSwiftUI
 
 struct FeedContentRow: View {
     
-    var accountData: AccountData
+    @ObservedObject var accountData: AccountData
     
     var feedModel: FeedSimpleModel
     
@@ -49,9 +49,11 @@ struct FeedContentRow: View {
                     .font(.headline)
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
                     Spacer()
-                    if (self.accountData.account != nil) {
+                    if (self.accountData.account != nil && feedModel.author?.username != nil) {
                         Button(action:{
-                            print("123123123123123123")
+                            self.accountData.startFollow(author: self.feedModel.author!.username, { error in
+                                print(error ?? "Unkonw error")
+                                })
                         }){
                             if self.isFollowed {
                                 Text("取消关注")

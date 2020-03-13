@@ -9,6 +9,6 @@
 import Foundation
 
 struct Followers: Codable{
-    var followAuthors : [String]?
-    var followAuthorIDs: [String]?
+    var followAuthors : Set<String> = Set()
+    var followAuthorIDs: Set<String> = Set()
 }
