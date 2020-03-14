@@ -23,15 +23,22 @@ final class AccountData: ObservableObject {
         ]
         TNNetworkAPIRequest<Account>(originUrl, .post)
             .data(bodyDic)
-            .start{ (account,error) -> Void in
-                if let account = account {
-                    print("Login Success!")
-                    self.account = account
-                    self.account?.username = accountID
-                    completion(account,nil)
-                } else {
-                    print(error ?? "Unkonw error")
+            .start{ (result) -> Void in
+                switch result {
+                case let .success(account):
+                    if let account = account {
+                        print("Login Success!")
+                        self.account = account
+                        completion(account,nil)
+                    }
+                
+                    break;
+                case let .failure(error):
                     completion(nil,error)
+                
+                    break;
+                default:
+                    break;
                 }
         }
     }
@@ -48,17 +55,23 @@ final class AccountData: ObservableObject {
         ]
         TNNetworkAPIRequest<Account>(originUrl, .post)
             .data(bodyDic)
-            .start { (account,error) in
-                if let account = account {
-                    print("Register Success!")
-                    self.account = account
-                    self.account?.username = accountID
-                    completion(account,nil)
-                } else {
-                    print(error ?? "Unkonw error")
+            .start { (result) -> Void in
+                switch result {
+                case let .success(account):
+                    if let account = account {
+                        print("Register Success!")
+                        self.account = account
+                        completion(account,nil)
+                    }
+                    
+                    break;
+                case let .failure(error):
                     completion(nil,error)
+                    break;
+                default:
+                    break;
                 }
-        }
+            }
     }
     
     func isFollowed(author username: String?) -> Bool {
@@ -66,7 +79,7 @@ final class AccountData: ObservableObject {
             return false
         }
 
-        for followerName in followers.followAuthors {
+        for followerName in followers.followAuthors ?? [] {
             if authorName == followerName {
                 return true
             }
@@ -83,15 +96,23 @@ final class AccountData: ObservableObject {
         let body = ["userID":username]
         TNNetworkAPIRequest<Followers>(originUrl, .post)
             .data(body)
-            .start{ (followers,error) -> Void in
-            if let followers = followers {
-                print("fetch followers Success!")
-                self.followers = followers
-                completion(followers,nil)
-            } else {
-                print(error ?? "Unkonw error")
-                completion(nil,error)
-            }
+            .start{ (result) -> Void in
+                switch result {
+                case let .success(followers):
+                    guard (followers != nil) else {
+                        completion(nil,nil)
+                        return
+                    }
+                    self.followers = followers!
+                    completion(followers,nil)
+                    break
+                case let .failure(error):
+                    print(error)
+                    completion(nil,error)
+                    break
+                default:
+                    break
+                }
         }
     }
     
@@ -105,15 +126,20 @@ final class AccountData: ObservableObject {
                     "followAuthors":[authorName]] as [String : Any]
         TNNetworkAPIRequest<Empty>(originUrl, .post)
             .data(body)
-            .start{ (empty,error) -> Void in
-            if error == nil {
-                self.followers.followAuthors.insert(authorName)
-                print("post followers Success!")
-                completion(nil)
-            } else {
-                print(error ?? "Unkonw error")
-                completion(error)
-            }
+            .start{ (result) -> Void in
+                switch result {
+                case .success(_):
+                    self.followers.followAuthors.insert(authorName)
+                    print("post followers Success!")
+                    completion(nil)
+                    break
+                case let .failure(error):
+                    print(error)
+                    completion(error)
+                    break
+                default:
+                    break
+                }
         }
     }
 }

@@ -24,13 +24,17 @@ final class FeedSearchData: ObservableObject {
         ]
         TNNetworkAPIRequest<SearchResultModel>(originUrl, .post)
             .data(bodyDic)
-            .start{ (searchResult,error) -> Void in
-                if let error = error {
-                    print(error)
-                    self.error = error
-                } else {
+            .start{ (result) -> Void in
+                switch result {
+                case let .success(searchResult):
                     print("fetch feeds Success!")
                     self.searchResultFeedSimple = searchResult?.feeds
+                    break
+                case let .failure(error):
+                    self.error = error
+                    break
+                default:
+                    break
                 }
         }
     }

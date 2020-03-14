@@ -47,22 +47,23 @@ class TNNetworkAPIRequest<T: Codable> {
         return self
     }
     
-    func start(_ completion: @escaping (T?,Error?) -> Void){
+    func start(_ completion: @escaping (Result<T?>) -> Void){
         guard let url = self.url else {
-            completion(nil,nil)
+            let error = HTTPError()
+            completion(.failure(error))
             return
         }
         Alamofire.request(url, method: self.method, parameters: self.body, encoding: JSONEncoding.default, headers: self.headers).validate().responseData { (response) in
             switch response.result {
                 case let .success(body):
-                    let reponse = try? JSONDecoder().decode(HTTPResponse<T>.self,from: body)
-                    print(reponse?.data ?? "not found")
-                    completion(reponse?.data,nil)
+                    let httpReponse = try? JSONDecoder().decode(HTTPResponse<T>.self,from: body)
+                    print(httpReponse?.data ?? "not found")
+                    completion(.success(httpReponse?.data))
                     break
                 
                 case let .failure(error):
                     print(error)
-                    completion(nil,error)
+                    completion(.failure(error))
                     break
                 }
         }

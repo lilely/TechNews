@@ -18,13 +18,16 @@ final class FeedSimpleData: ObservableObject {
     func refreshFeedSimple() {
         let originUrl = "https://localhost:8181/feed_list/tag/推荐"
         TNNetworkAPIRequest<[FeedSimpleModel]>(originUrl, .get)
-            .start{ (feedSimples,error) -> Void in
-                if let error = error {
-                    print(error)
-                    self.error = error
-                } else {
-                    print("fetch feeds Success!")
+            .start{ (result) -> Void in
+                switch result {
+                case let .success(feedSimples):
                     self.feedSimples = feedSimples
+                    break
+                case let .failure(error):
+                    self.error = error
+                    break
+                default:
+                    break
                 }
         }
     }

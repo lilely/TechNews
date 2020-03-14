@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum Result<T> {
+    case success(T)
+    case failure(Error)
+}
+
+struct HTTPError: Error {
+    
+}
+
 struct Empty: Codable{
     
 }
@@ -16,4 +25,5 @@ struct HTTPResponse<T: Codable>: Codable {
     let status: Int
     let message: String
     let data: T?
+    
 }
