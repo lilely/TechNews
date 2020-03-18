@@ -26,8 +26,6 @@ final class FeedSimpleData: ObservableObject {
                 case let .failure(error):
                     self.error = error
                     break
-                default:
-                    break
                 }
         }
     }

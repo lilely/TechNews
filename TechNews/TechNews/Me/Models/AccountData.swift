@@ -30,14 +30,19 @@ final class AccountData: ObservableObject {
                         print("Login Success!")
                         self.account = account
                         completion(account,nil)
+                        self.fetchFollowers { (followers, error) in
+                            if let followers = followers {
+                                self.followers = followers
+                            } else {
+                                print(error ?? "Unkonw error")
+                            }
+                        }
                     }
                 
                     break;
                 case let .failure(error):
                     completion(nil,error)
                 
-                    break;
-                default:
                     break;
                 }
         }
@@ -68,8 +73,6 @@ final class AccountData: ObservableObject {
                 case let .failure(error):
                     completion(nil,error)
                     break;
-                default:
-                    break;
                 }
             }
     }
@@ -79,7 +82,7 @@ final class AccountData: ObservableObject {
             return false
         }
 
-        for followerName in followers.followAuthors ?? [] {
+        for followerName in followers.followAuthors {
             if authorName == followerName {
                 return true
             }
@@ -88,14 +91,12 @@ final class AccountData: ObservableObject {
     }
     
     func fetchFollowers(_ completion: @escaping (Followers?, Error?)-> Void) {
-        guard let username = self.account?.username else {
+        guard let userID = self.account?.userID else {
             completion(nil,nil)
             return
         }
-        let originUrl = "https://localhost:8181/followers";
-        let body = ["userID":username]
-        TNNetworkAPIRequest<Followers>(originUrl, .post)
-            .data(body)
+        let originUrl = "https://localhost:8181/follow/followers/\(userID)";
+        TNNetworkAPIRequest<Followers>(originUrl, .get)
             .start{ (result) -> Void in
                 switch result {
                 case let .success(followers):
@@ -110,19 +111,17 @@ final class AccountData: ObservableObject {
                     print(error)
                     completion(nil,error)
                     break
-                default:
-                    break
                 }
         }
     }
     
     func startFollow(author authorName: String,_ completion: @escaping (Error?)-> Void) {
-        guard let username = self.account?.username else {
+        guard let userID = self.account?.userID else {
             completion(nil)
             return
         }
         let originUrl = "https://localhost:8181/follow/author";
-        let body = ["userID":username,
+        let body = ["userID":userID,
                     "followAuthors":[authorName]] as [String : Any]
         TNNetworkAPIRequest<Empty>(originUrl, .post)
             .data(body)
@@ -137,7 +136,30 @@ final class AccountData: ObservableObject {
                     print(error)
                     completion(error)
                     break
-                default:
+                }
+        }
+    }
+    
+    func unFollow(author authorName: String,_ completion: @escaping (Error?)-> Void) {
+        guard let userID = self.account?.userID else {
+            completion(nil)
+            return
+        }
+        let originUrl = "https://localhost:8181/unfollow/author";
+        let body = ["userID":userID,
+                    "followAuthors":[authorName]] as [String : Any]
+        TNNetworkAPIRequest<Empty>(originUrl, .post)
+            .data(body)
+            .start{ (result) -> Void in
+                switch result {
+                case .success(_):
+                    self.followers.followAuthors.remove(authorName)
+                    print("post followers Success!")
+                    completion(nil)
+                    break
+                case let .failure(error):
+                    print(error)
+                    completion(error)
                     break
                 }
         }

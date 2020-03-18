@@ -37,6 +37,9 @@ struct HomeContentView: View {
             .navigationBarTitle(Text("首页"))
             .navigationBarItems(trailing: Button(action: {
                 print("Tap")
+                self.accountData.fetchFollowers { _,_ in
+                    
+                }
             }, label: {
                 Text("Right").foregroundColor(.orange)
             }))
