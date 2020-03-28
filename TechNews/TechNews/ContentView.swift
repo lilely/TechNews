@@ -11,15 +11,17 @@ import SwiftUI
 struct ContentView: View {
     
     let accountData = AccountData()
+    let feedsData = FeedSimpleData()
+    let followFeedsData = FollowFeedsData()
     
     var body: some View {
         TabView {
-            HomeContentView().environmentObject(FeedSimpleData()).environmentObject(accountData).tabItem({
+            HomeContentView().environmentObject(feedsData).environmentObject(accountData).tabItem({
                 Image(systemName: "square.stack.3d.down.right")
                 Text("首页")
             }).tag(0)
-            
-            FollowContentView().tabItem({
+            FollowContentView().environmentObject(accountData).environmentObject(followFeedsData)
+                .tabItem({
                 Image(systemName: "person.3")
                 Text("关注")
             }).tag(1)

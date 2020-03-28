@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66180BD7242F801400401B7E /* FollowFeedsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66180BD6242F801400401B7E /* FollowFeedsData.swift */; };
 		6670B27B23E86272003E383F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6670B27A23E86272003E383F /* Alamofire */; };
 		6670B27E23E8658F003E383F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6670B27D23E8658F003E383F /* KingfisherSwiftUI */; };
 		6670B28023E86BB1003E383F /* FeedSimpleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B27F23E86BB1003E383F /* FeedSimpleModel.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66180BD6242F801400401B7E /* FollowFeedsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFeedsData.swift; sourceTree = "<group>"; };
 		6670B27F23E86BB1003E383F /* FeedSimpleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSimpleModel.swift; sourceTree = "<group>"; };
 		6670B28123E86BC9003E383F /* FeedSimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSimpleData.swift; sourceTree = "<group>"; };
 		6670B28323E86C55003E383F /* FeedAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAuthor.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66180BD5242F7FF600401B7E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				66180BD6242F801400401B7E /* FollowFeedsData.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		66B177E4240A90D000BCDF31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +310,7 @@
 		E285B11823D7E1E600092814 /* Follow */ = {
 			isa = PBXGroup;
 			children = (
+				66180BD5242F7FF600401B7E /* ViewModel */,
 				E285B12323D7F67000092814 /* FollowContentView.swift */,
 			);
 			path = Follow;
@@ -452,6 +463,7 @@
 				66B177DF2408A4FD00BCDF31 /* Account.swift in Sources */,
 				E285B12223D7F61C00092814 /* Constants.swift in Sources */,
 				66B177E8240A959E00BCDF31 /* ProfileActionRow.swift in Sources */,
+				66180BD7242F801400401B7E /* FollowFeedsData.swift in Sources */,
 				66B177EA240A95EE00BCDF31 /* ProfileActionItem.swift in Sources */,
 				E285B12623D7F68700092814 /* RecommendContentView.swift in Sources */,
 				66B177E6240A90F700BCDF31 /* HostProfileView.swift in Sources */,

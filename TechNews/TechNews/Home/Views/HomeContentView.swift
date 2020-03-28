@@ -20,29 +20,33 @@ struct HomeContentView: View {
     
     var body: some View {
         NavigationView {
-            List(self.feedData.feedSimples ?? []) {
-                feedSimple in
-                NavigationLink(
-                    destination: FeedDetailView()
-                ) {
-                    FeedContentRow(accountData: self.accountData, feedModel: feedSimple)
+            if self.feedData.feedSimples?.count ?? 0 > 0 {
+                List(self.feedData.feedSimples ?? []) {
+                    feedSimple in
+                    NavigationLink(
+                        destination: FeedDetailView()
+                    ) {
+                        FeedContentRow(accountData: self.accountData, feedModel: feedSimple)
+                    }
                 }
+                .pullToRefresh(isShowing: $isShowing, onRefresh: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.isShowing = false
+                    }
+                    self.refresh()
+                })
+                .navigationBarTitle(Text("首页"))
+                .navigationBarItems(trailing: Button(action: {
+                    print("Tap")
+                    self.accountData.fetchFollowers { _,_ in
+                        
+                    }
+                }, label: {
+                    Text("Right").foregroundColor(.orange)
+                }))
+            } else {
+                Text("Empty")
             }
-            .pullToRefresh(isShowing: $isShowing, onRefresh: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.isShowing = false
-                }
-                self.refresh()
-            })
-            .navigationBarTitle(Text("首页"))
-            .navigationBarItems(trailing: Button(action: {
-                print("Tap")
-                self.accountData.fetchFollowers { _,_ in
-                    
-                }
-            }, label: {
-                Text("Right").foregroundColor(.orange)
-            }))
         }.onAppear(perform: refresh)
     }
     
