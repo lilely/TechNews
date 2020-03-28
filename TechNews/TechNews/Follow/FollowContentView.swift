@@ -13,6 +13,7 @@ struct FollowContentView: View {
     @EnvironmentObject private var accountData: AccountData
     @EnvironmentObject private var followFeeds: FollowFeedsData
     @State private var isShowing: Bool = false
+    @State private var gotoLogin: Bool = false
     
     func refresh() {
         guard let userID = self.accountData.account?.userID else {
@@ -23,12 +24,24 @@ struct FollowContentView: View {
     
     var body: some View {
         NavigationView {
-            List(self.followFeeds.feeds) {
-                feedSimple in
-                NavigationLink(
-                    destination: FeedDetailView()
-                ) {
-                    FeedContentRow(accountData: self.accountData, feedModel: feedSimple)
+            VStack{
+                if self.accountData.account != nil {
+                    List(self.followFeeds.feeds) {
+                        feedSimple in
+                        NavigationLink(
+                            destination: FeedDetailView()
+                        ) {
+                            FeedContentRow(accountData: self.accountData, feedModel: feedSimple)
+                        }
+                    }
+                } else {
+                    Button(action: {
+                        self.gotoLogin = true
+                    }) {
+                        Text("登录/注册")
+                    }.sheet(isPresented: self.$gotoLogin) {
+                        LoginContentView().environmentObject(self.accountData)
+                    }
                 }
             }
             .pullToRefresh(isShowing: $isShowing, onRefresh: {
@@ -46,7 +59,8 @@ struct FollowContentView: View {
             }, label: {
                 Text("Right").foregroundColor(.orange)
             }))
-        }.onAppear(perform: refresh)
+            .onAppear(perform: refresh)
+        }
     }
 }
 

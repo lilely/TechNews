@@ -24,7 +24,15 @@ struct LoginContentView: View {
     }
     
     var body: some View {
-        NavigationView {
+        VStack {
+        HStack {
+            Spacer()
+            Button(action:{
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "return")
+            }
+        }.padding(EdgeInsets(top: 25, leading: 5, bottom: 5, trailing: 20))
         VStack {
             ZStack {
                 TextField("输入账号",text:$inputAccountID, onEditingChanged: { isEditing in
