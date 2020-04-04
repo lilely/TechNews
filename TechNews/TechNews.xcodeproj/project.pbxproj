@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		66180BD7242F801400401B7E /* FollowFeedsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66180BD6242F801400401B7E /* FollowFeedsData.swift */; };
+		664307092437F10A003AFBAD /* PerfectCRUD in Frameworks */ = {isa = PBXBuildFile; productRef = 664307082437F10A003AFBAD /* PerfectCRUD */; };
+		6643070B2437F309003AFBAD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643070A2437F309003AFBAD /* DatabaseManager.swift */; };
+		6643070E2438ADE4003AFBAD /* PerfectSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 6643070D2438ADE4003AFBAD /* PerfectSQLite */; };
+		664307102438CF4E003AFBAD /* DatabaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643070F2438CF4E003AFBAD /* DatabaseModel.swift */; };
+		664307122438D0D2003AFBAD /* DatabaseManager+Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664307112438D0D2003AFBAD /* DatabaseManager+Migration.swift */; };
 		6670B27B23E86272003E383F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6670B27A23E86272003E383F /* Alamofire */; };
 		6670B27E23E8658F003E383F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6670B27D23E8658F003E383F /* KingfisherSwiftUI */; };
 		6670B28023E86BB1003E383F /* FeedSimpleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B27F23E86BB1003E383F /* FeedSimpleModel.swift */; };
@@ -35,7 +40,6 @@
 		66FF103023FC36B000F11397 /* FeedSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FF102F23FC36AF00F11397 /* FeedSearchData.swift */; };
 		66FF103223FC41C800F11397 /* FeedSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FF103123FC41C800F11397 /* FeedSearchResult.swift */; };
 		66FF103423FD5E9300F11397 /* SearchFeedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FF103323FD5E9300F11397 /* SearchFeedRow.swift */; };
-		E285397D23D8142000AFC176 /* feedsData.json in Resources */ = {isa = PBXBuildFile; fileRef = E285397C23D8142000AFC176 /* feedsData.json */; };
 		E285398023D8175100AFC176 /* FeedContentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E285397F23D8175100AFC176 /* FeedContentRow.swift */; };
 		E285398323D822FF00AFC176 /* SearchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E285398223D822FF00AFC176 /* SearchContentView.swift */; };
 		E285B12023D7ED6B00092814 /* HomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E285B11F23D7ED6B00092814 /* HomeContentView.swift */; };
@@ -57,6 +61,9 @@
 
 /* Begin PBXFileReference section */
 		66180BD6242F801400401B7E /* FollowFeedsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFeedsData.swift; sourceTree = "<group>"; };
+		6643070A2437F309003AFBAD /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		6643070F2438CF4E003AFBAD /* DatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModel.swift; sourceTree = "<group>"; };
+		664307112438D0D2003AFBAD /* DatabaseManager+Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseManager+Migration.swift"; sourceTree = "<group>"; };
 		6670B27F23E86BB1003E383F /* FeedSimpleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSimpleModel.swift; sourceTree = "<group>"; };
 		6670B28123E86BC9003E383F /* FeedSimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSimpleData.swift; sourceTree = "<group>"; };
 		6670B28323E86C55003E383F /* FeedAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAuthor.swift; sourceTree = "<group>"; };
@@ -85,7 +92,6 @@
 		66FF102F23FC36AF00F11397 /* FeedSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSearchData.swift; sourceTree = "<group>"; };
 		66FF103123FC41C800F11397 /* FeedSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSearchResult.swift; sourceTree = "<group>"; };
 		66FF103323FD5E9300F11397 /* SearchFeedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFeedRow.swift; sourceTree = "<group>"; };
-		E285397C23D8142000AFC176 /* feedsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = feedsData.json; sourceTree = "<group>"; };
 		E285397F23D8175100AFC176 /* FeedContentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContentRow.swift; sourceTree = "<group>"; };
 		E285398223D822FF00AFC176 /* SearchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentView.swift; sourceTree = "<group>"; };
 		E285B11F23D7ED6B00092814 /* HomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 			files = (
 				66FF102D23FAF17200F11397 /* SwiftUIRefresh in Frameworks */,
 				6670B27E23E8658F003E383F /* KingfisherSwiftUI in Frameworks */,
+				664307092437F10A003AFBAD /* PerfectCRUD in Frameworks */,
+				6643070E2438ADE4003AFBAD /* PerfectSQLite in Frameworks */,
 				6670B27B23E86272003E383F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +135,9 @@
 		66180BD8242F9EBD00401B7E /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				6643070A2437F309003AFBAD /* DatabaseManager.swift */,
+				664307112438D0D2003AFBAD /* DatabaseManager+Migration.swift */,
+				6643070F2438CF4E003AFBAD /* DatabaseModel.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -229,17 +240,9 @@
 			isa = PBXGroup;
 			children = (
 				66B177E0240A56B300BCDF31 /* TNNetworkAPIRequest.swift */,
-				66FF102623F97E3C00F11397 /* Models */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		66FF102623F97E3C00F11397 /* Models */ = {
-			isa = PBXGroup;
-			children = (
 				66FF102923F97E8600F11397 /* HTTPResponse.swift */,
 			);
-			path = Models;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		66FF102E23FC369800F11397 /* Models */ = {
@@ -272,17 +275,8 @@
 		E285397A23D8140900AFC176 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E285397B23D8140F00AFC176 /* JSON */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		E285397B23D8140F00AFC176 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E285397C23D8142000AFC176 /* feedsData.json */,
-			);
-			path = JSON;
 			sourceTree = "<group>";
 		};
 		E285397E23D8173D00AFC176 /* Views */ = {
@@ -363,6 +357,8 @@
 				6670B27A23E86272003E383F /* Alamofire */,
 				6670B27D23E8658F003E383F /* KingfisherSwiftUI */,
 				66FF102C23FAF17200F11397 /* SwiftUIRefresh */,
+				664307082437F10A003AFBAD /* PerfectCRUD */,
+				6643070D2438ADE4003AFBAD /* PerfectSQLite */,
 			);
 			productName = TechNews;
 			productReference = 66EBF0F923D73DA1007E3202 /* TechNews.app */;
@@ -418,6 +414,8 @@
 				6670B27923E86272003E383F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				6670B27C23E8658E003E383F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				66FF102B23FAF17200F11397 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+				664307072437F10A003AFBAD /* XCRemoteSwiftPackageReference "Perfect-CRUD" */,
+				6643070C2438ADE4003AFBAD /* XCRemoteSwiftPackageReference "Perfect-SQLite" */,
 			);
 			productRefGroup = 66EBF0FA23D73DA1007E3202 /* Products */;
 			projectDirPath = "";
@@ -435,7 +433,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66EBF10923D73DA7007E3202 /* LaunchScreen.storyboard in Resources */,
-				E285397D23D8142000AFC176 /* feedsData.json in Resources */,
 				66EBF10623D73DA7007E3202 /* Preview Assets.xcassets in Resources */,
 				66EBF10323D73DA7007E3202 /* Assets.xcassets in Resources */,
 			);
@@ -455,6 +452,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				664307122438D0D2003AFBAD /* DatabaseManager+Migration.swift in Sources */,
+				664307102438CF4E003AFBAD /* DatabaseModel.swift in Sources */,
+				6643070B2437F309003AFBAD /* DatabaseManager.swift in Sources */,
 				6670B28023E86BB1003E383F /* FeedSimpleModel.swift in Sources */,
 				6670B28623EED9A2003E383F /* FeedDetailView.swift in Sources */,
 				66E736252406C09800FCB8CC /* LoginContentView.swift in Sources */,
@@ -747,33 +747,59 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		664307072437F10A003AFBAD /* XCRemoteSwiftPackageReference "Perfect-CRUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PerfectlySoft/Perfect-CRUD.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.0.0;
+			};
+		};
+		6643070C2438ADE4003AFBAD /* XCRemoteSwiftPackageReference "Perfect-SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PerfectlySoft/Perfect-SQLite.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.0;
+			};
+		};
 		6670B27923E86272003E383F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.9.1;
+				kind = exactVersion;
+				version = 4.9.1;
 			};
 		};
 		6670B27C23E8658E003E383F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.13.0;
+				kind = exactVersion;
+				version = 5.13.0;
 			};
 		};
 		66FF102B23FAF17200F11397 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUIRefresh.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
+				kind = exactVersion;
+				version = 0.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		664307082437F10A003AFBAD /* PerfectCRUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 664307072437F10A003AFBAD /* XCRemoteSwiftPackageReference "Perfect-CRUD" */;
+			productName = PerfectCRUD;
+		};
+		6643070D2438ADE4003AFBAD /* PerfectSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6643070C2438ADE4003AFBAD /* XCRemoteSwiftPackageReference "Perfect-SQLite" */;
+			productName = PerfectSQLite;
+		};
 		6670B27A23E86272003E383F /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6670B27923E86272003E383F /* XCRemoteSwiftPackageReference "Alamofire" */;
