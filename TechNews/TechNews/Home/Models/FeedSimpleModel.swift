@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FeedSimpleModel: Hashable, Codable, Identifiable {
+struct FeedSimpleModel: Hashable, Codable, Identifiable ,DatabaseModel{
     
     var id: Int?
     var feedID: String?

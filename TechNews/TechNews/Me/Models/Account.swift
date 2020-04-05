@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Account : Codable{
+struct Account : Codable, DatabaseModel{
     
     typealias Token = String
     

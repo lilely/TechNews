@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Author: Hashable, Codable, Identifiable {
+struct Author: Hashable, Codable, Identifiable ,DatabaseModel{
     var id: Int?
     var role: String?
     var avatarHd: String?

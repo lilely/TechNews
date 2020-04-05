@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Followers: Codable{
+struct Followers: Codable, DatabaseModel{
     var followAuthors : Set<String> = Set()
     var followAuthorIDs: Set<String> = Set()
 }

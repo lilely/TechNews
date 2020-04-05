@@ -14,8 +14,9 @@ protocol DatabaseModel {
 
 extension DatabaseModel where Self : Codable {
     
-    func query(on: DatabaseManager) -> Table<Self,DatabaseManager.DataBaseType>? {
-        let table = DatabaseManager.default.migrationTable(for: self)
+    static func query(on: DatabaseManager) -> Table<Self,DatabaseManager.DataBaseType>? {
+        let table = DatabaseManager.default.migrationTable(for: self.self)
         return table
     }
+    
 }
