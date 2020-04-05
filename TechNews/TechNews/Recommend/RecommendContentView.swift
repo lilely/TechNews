@@ -10,7 +10,12 @@ import SwiftUI
 
 struct RecommendContentView: View {
     var body: some View {
-        Text("Recommend!")
+        NavigationView {
+            VStack{
+                Text("Recommend!")
+            }
+           .navigationBarTitle(Text("新闻"))
+        }
     }
 }
 

@@ -62,12 +62,12 @@ struct SearchContentView: View {
                             SearchFeedRow(feedModel: feedSimple)
                         }
                     }
-                    .navigationBarTitle(Text("搜索"))
-                    .resignKeyboardOnDragGesture()
                 } else {
                     Spacer()
                 }
             }
+            .navigationBarTitle(Text("搜索"))
+            .resignKeyboardOnDragGesture()
             .onAppear(perform: {
                 self.searchData.fetchSearchResultBy(keyword: "推荐")
             })

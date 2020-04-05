@@ -257,6 +257,7 @@
 		66FF103523FD5EAA00F11397 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E285398223D822FF00AFC176 /* SearchContentView.swift */,
 				66FF103323FD5E9300F11397 /* SearchFeedRow.swift */,
 			);
 			path = Views;
@@ -294,7 +295,6 @@
 			children = (
 				66FF103523FD5EAA00F11397 /* Views */,
 				66FF102E23FC369800F11397 /* Models */,
-				E285398223D822FF00AFC176 /* SearchContentView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
