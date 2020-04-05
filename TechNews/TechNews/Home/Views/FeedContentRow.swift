@@ -90,7 +90,7 @@ struct FeedContentRow: View {
 struct FeedContentRow_Previews: PreviewProvider {
     static var previews: some View {
         let author = Author(id: 1, role: "Guest", avatarHd: "", avatarLarge: "", username: "haha侠")
-        let feedModel: FeedSimpleModel = FeedSimpleModel(id: 1, feedID: "1", from: "juejin", tag_name: "推荐", original: "", original_url: "", title: "吃饭", content:"blablabla",author: author, created_at: "111", updated_at: "222")
+        let feedModel: FeedSimpleModel = FeedSimpleModel(id: 1, feedID: "1", from_station: "juejin", tag_name: "推荐", original: "", original_url: "", title: "吃饭", content:"blablabla",author: author, created_at: "111", updated_at: "222")
         return FeedContentRow(accountData: AccountData(), feedModel: feedModel)
     }
 }

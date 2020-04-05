@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PerfectCRUD
 
 final class AccountData: ObservableObject {
     
@@ -33,6 +34,15 @@ final class AccountData: ObservableObject {
                         self.fetchFollowers { (followers, error) in
                             if let followers = followers {
                                 self.followers = followers
+                                do {
+                                    guard let table = Followers.query(on: DatabaseManager.default) else {
+                                        return
+                                    }
+                                    try table.insert([followers])
+                                    
+                                } catch {
+                                    print(error)
+                                }
                             } else {
                                 print(error ?? "Unkonw error")
                             }

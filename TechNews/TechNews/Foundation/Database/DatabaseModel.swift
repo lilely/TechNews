@@ -20,3 +20,7 @@ extension DatabaseModel where Self : Codable {
     }
     
 }
+
+extension Table {
+
+}

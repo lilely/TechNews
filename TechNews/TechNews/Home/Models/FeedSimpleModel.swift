@@ -12,12 +12,13 @@ struct FeedSimpleModel: Hashable, Codable, Identifiable ,DatabaseModel{
     
     var id: Int?
     var feedID: String?
-    var from: String
+    var from_station: String
     var tag_name: String
     var original: String?
     var original_url: String?
     var title: String = ""
     var content: String?
+    var author_id: String?
     var author: Author?
     var created_at: String?
     var updated_at: String?
@@ -47,12 +48,13 @@ struct FeedSimpleModel: Hashable, Codable, Identifiable ,DatabaseModel{
         
         return FeedSimpleModel(id: dic["Id"] as? Int,
                                feedID: dic["feedID"] as? String,
-                               from: dic["from"] as? String ?? "no where",
+                               from_station: dic["from"] as? String ?? "no where",
                                tag_name: dic["tag_name"] as? String ?? "no tag",
                                original: dic["original"] as? String,
                                original_url: dic["original_url"] as? String,
                                title: dic["title"] as! String,
                                content: dic["content"] as? String,
+                               author_id: "",
                                author: author,
                                created_at: dic["created_at"] as? String,
                                updated_at: dic["updated_at"] as? String) }

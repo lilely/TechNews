@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import PerfectCRUD
 
 final class FeedSimpleData: ObservableObject {
     
@@ -22,6 +23,14 @@ final class FeedSimpleData: ObservableObject {
                 switch result {
                 case let .success(feedSimples):
                     self.feedSimples = feedSimples
+                    guard let table = FeedSimpleModel.query(on: DatabaseManager.default) else {
+                        return
+                    }
+                    do {
+                        try table.insert(feedSimples ?? [])
+                    } catch {
+                        print(error)
+                    }
                     break
                 case let .failure(error):
                     self.error = error

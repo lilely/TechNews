@@ -14,6 +14,6 @@ struct Author: Hashable, Codable, Identifiable ,DatabaseModel{
     var avatarHd: String?
     var avatarLarge: String?
     var username: String
-    
+    var articles: [FeedSimpleModel]?
     
 }

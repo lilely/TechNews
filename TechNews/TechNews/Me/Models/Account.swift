@@ -12,6 +12,7 @@ struct Account : Codable, DatabaseModel{
     
     typealias Token = String
     
+    var id: Int?
     var username: String
     var userID: String
     var accessToken: Token
