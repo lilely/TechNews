@@ -38,7 +38,7 @@ final class DatabaseManager {
     
     public func addMigration<T: Codable>(type: T.Type) {
         do {
-            try self.dataBase.create(type)
+            try self.dataBase.create(type,policy: [.shallow, .dropTable])
         } catch {
             print(error)
         }

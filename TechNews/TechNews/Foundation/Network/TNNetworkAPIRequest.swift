@@ -57,7 +57,7 @@ class TNNetworkAPIRequest<T: Codable> {
             switch response.result {
                 case let .success(body):
                     let httpReponse = try? JSONDecoder().decode(HTTPResponse<T>.self,from: body)
-                    print(httpReponse?.data ?? "not found")
+                    //print(httpReponse?.data ?? "not found")
                     completion(.success(httpReponse?.data))
                     break
                 

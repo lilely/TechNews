@@ -11,6 +11,7 @@ import Foundation
 extension DatabaseManager {
     
     static func setupModels() {
+        DatabaseManager.default.addMigration(type: FeedSimpleAuthor.self)
         DatabaseManager.default.addMigration(type: Author.self)
         DatabaseManager.default.addMigration(type: FeedSimpleModel.self)
         DatabaseManager.default.addMigration(type: Followers.self)
