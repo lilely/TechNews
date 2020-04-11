@@ -18,6 +18,12 @@ struct AbourtMeContentView: View {
     let group1ActionItems : [ProfileActionItem] = [ProfileActionItem(id: 0, icon: "flame", title: "设置", descript: "进入设置"),
     ProfileActionItem(id:1, icon: "gear", title: "设置", descript: "进入设置")]
     
+    func refreshProfile() {
+        self.accountData.fetchLocalAccount { _,_ in 
+            ()
+        }
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -51,7 +57,7 @@ struct AbourtMeContentView: View {
                         }
                     }
             })
-        }
+        }.onAppear(perform: self.refreshProfile)
     }
 }
 

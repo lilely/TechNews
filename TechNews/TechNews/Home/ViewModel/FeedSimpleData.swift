@@ -23,38 +23,24 @@ final class FeedSimpleData: ObservableObject {
     
     func refreshFeedSimple() {
         let originUrl = "https://localhost:8181/feed_list/tag/推荐"
+        do {
+            self.feedSimples = try FeedSimpleModel.query(on: DatabaseManager.default)?
+                                            .limit(20)
+                                            .select()
+                                            .map({$0})
+        } catch {
+            print(error)
+        }
         TNNetworkAPIRequest<[FeedSimpleModel]>(originUrl, .get)
             .start{ (result) -> Void in
                 switch result {
                 case let .success(feedSimples):
                     self.feedSimples = feedSimples
-                    guard let table0 = FeedSimpleAuthor.query(on: DatabaseManager.default) else {
-                        return
-                    }
                     do {
                         guard (feedSimples != nil) else {
                             return
                         }
-                        let feedSimpleAuthors =
-                        feedSimples?.compactMap({ (feedSimple) -> FeedSimpleAuthor? in
-                            return FeedSimpleAuthor(authorID: feedSimple.author?.id ?? -1, feedSimpleID: feedSimple.id ?? -1)
-                        })
-                        if feedSimpleAuthors != nil {
-                            try table0.insert(feedSimpleAuthors!)
-                        }
-                    } catch {
-                        print(error)
-                    }
-                    
-                    
-                    guard let table1 = FeedSimpleModel.query(on: DatabaseManager.default) else {
-                        return
-                    }
-                    do {
-                        guard (feedSimples != nil) else {
-                            return
-                        }
-                        try table1.insert(feedSimples!)
+                        try FeedSimpleModel.query(on: DatabaseManager.default)?.insert(feedSimples!)
                     } catch {
                         print(error)
                     }

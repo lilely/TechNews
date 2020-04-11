@@ -15,6 +15,21 @@ final class AccountData: ObservableObject {
     
     @Published var followers: Followers = Followers()
     
+    func fetchLocalAccount(on completion: @escaping (Account?, Error?)->Void) {
+        do {
+            self.account = try Account.query(on: DatabaseManager.default)?
+                                            .limit(1)
+                                            .select()
+                                            .map({$0})
+                                            .first
+        } catch {
+            print(error)
+        }
+        if self.account != nil {
+            completion(self.account,nil)
+        }
+    }
+    
     func login(withAccount accountID: String,andPassword password: String,_ completion: @escaping (Account?, Error?)->Void) {
         
         let originUrl = "https://localhost:8181/user/signin"
@@ -30,6 +45,12 @@ final class AccountData: ObservableObject {
                     if let account = account {
                         print("Login Success!")
                         self.account = account
+                        do {
+                            try Account.query(on: DatabaseManager.default)?
+                                            .insert(account)
+                        } catch {
+                            print(error)
+                        }
                         completion(account,nil)
                         self.fetchFollowers { (followers, error) in
                             if let followers = followers {
