@@ -41,6 +41,7 @@ struct LoginContentView: View {
                     print("on commit")
 
                 })
+                .autocapitalization(.none)
                 .textContentType(.username)
                 .font(.system(size: 25))
                 .multilineTextAlignment(.center)

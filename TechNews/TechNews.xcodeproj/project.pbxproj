@@ -27,6 +27,9 @@
 		66B177E8240A959E00BCDF31 /* ProfileActionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177E7240A959E00BCDF31 /* ProfileActionRow.swift */; };
 		66B177EA240A95EE00BCDF31 /* ProfileActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177E9240A95EE00BCDF31 /* ProfileActionItem.swift */; };
 		66B177EF24113D5200BCDF31 /* Followers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177EE24113D5200BCDF31 /* Followers.swift */; };
+		66C7EB8F2442AD13007B13C5 /* AuthenticationMiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7EB8E2442AD13007B13C5 /* AuthenticationMiddleWare.swift */; };
+		66C7EB912442AD2C007B13C5 /* TNNetworkAPIMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7EB902442AD2C007B13C5 /* TNNetworkAPIMiddleware.swift */; };
+		66C7EB942442C0CE007B13C5 /* AuthenticateNetworkMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7EB932442C0CE007B13C5 /* AuthenticateNetworkMiddleware.swift */; };
 		66E736252406C09800FCB8CC /* LoginContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E736242406C09800FCB8CC /* LoginContentView.swift */; };
 		66EBF0FD23D73DA1007E3202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EBF0FC23D73DA1007E3202 /* AppDelegate.swift */; };
 		66EBF0FF23D73DA1007E3202 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EBF0FE23D73DA1007E3202 /* SceneDelegate.swift */; };
@@ -76,6 +79,9 @@
 		66B177E7240A959E00BCDF31 /* ProfileActionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionRow.swift; sourceTree = "<group>"; };
 		66B177E9240A95EE00BCDF31 /* ProfileActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionItem.swift; sourceTree = "<group>"; };
 		66B177EE24113D5200BCDF31 /* Followers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Followers.swift; sourceTree = "<group>"; };
+		66C7EB8E2442AD13007B13C5 /* AuthenticationMiddleWare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMiddleWare.swift; sourceTree = "<group>"; };
+		66C7EB902442AD2C007B13C5 /* TNNetworkAPIMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNetworkAPIMiddleware.swift; sourceTree = "<group>"; };
+		66C7EB932442C0CE007B13C5 /* AuthenticateNetworkMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateNetworkMiddleware.swift; sourceTree = "<group>"; };
 		66E736242406C09800FCB8CC /* LoginContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContentView.swift; sourceTree = "<group>"; };
 		66EBF0F923D73DA1007E3202 /* TechNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EBF0FC23D73DA1007E3202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +151,8 @@
 		66B177E4240A90D000BCDF31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E285B12723D7F69800092814 /* AbourtMeContentView.swift */,
+				66E736242406C09800FCB8CC /* LoginContentView.swift */,
 				66B177E5240A90F700BCDF31 /* HostProfileView.swift */,
 				66B177E7240A959E00BCDF31 /* ProfileActionRow.swift */,
 			);
@@ -159,10 +167,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		66E7362624089EEC00FCB8CC /* Models */ = {
+		66C7EB922442C08E007B13C5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				66B177DC2408A45A00BCDF31 /* AccountData.swift */,
+				66C7EB932442C0CE007B13C5 /* AuthenticateNetworkMiddleware.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		66E7362624089EEC00FCB8CC /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				66B177DE2408A4FD00BCDF31 /* Account.swift */,
 				66B177E2240A8E6400BCDF31 /* Profile.swift */,
 				66B177E9240A95EE00BCDF31 /* ProfileActionItem.swift */,
@@ -239,8 +255,10 @@
 		66FF102523F97E2F00F11397 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				66C7EB902442AD2C007B13C5 /* TNNetworkAPIMiddleware.swift */,
 				66B177E0240A56B300BCDF31 /* TNNetworkAPIRequest.swift */,
 				66FF102923F97E8600F11397 /* HTTPResponse.swift */,
+				66C7EB8E2442AD13007B13C5 /* AuthenticationMiddleWare.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -329,10 +347,9 @@
 		E285B11A23D7E22D00092814 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				66C7EB922442C08E007B13C5 /* ViewModel */,
 				66B177E4240A90D000BCDF31 /* Views */,
 				66E7362624089EEC00FCB8CC /* Models */,
-				E285B12723D7F69800092814 /* AbourtMeContentView.swift */,
-				66E736242406C09800FCB8CC /* LoginContentView.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -457,6 +474,7 @@
 				6643070B2437F309003AFBAD /* DatabaseManager.swift in Sources */,
 				6670B28023E86BB1003E383F /* FeedSimpleModel.swift in Sources */,
 				6670B28623EED9A2003E383F /* FeedDetailView.swift in Sources */,
+				66C7EB942442C0CE007B13C5 /* AuthenticateNetworkMiddleware.swift in Sources */,
 				66E736252406C09800FCB8CC /* LoginContentView.swift in Sources */,
 				6670B28223E86BC9003E383F /* FeedSimpleData.swift in Sources */,
 				66B177EF24113D5200BCDF31 /* Followers.swift in Sources */,
@@ -468,6 +486,7 @@
 				E285B12023D7ED6B00092814 /* HomeContentView.swift in Sources */,
 				66FF103023FC36B000F11397 /* FeedSearchData.swift in Sources */,
 				E285398323D822FF00AFC176 /* SearchContentView.swift in Sources */,
+				66C7EB912442AD2C007B13C5 /* TNNetworkAPIMiddleware.swift in Sources */,
 				66B177DF2408A4FD00BCDF31 /* Account.swift in Sources */,
 				E285B12223D7F61C00092814 /* Constants.swift in Sources */,
 				66B177E8240A959E00BCDF31 /* ProfileActionRow.swift in Sources */,
@@ -475,6 +494,7 @@
 				66B177EA240A95EE00BCDF31 /* ProfileActionItem.swift in Sources */,
 				E285B12623D7F68700092814 /* RecommendContentView.swift in Sources */,
 				66B177E6240A90F700BCDF31 /* HostProfileView.swift in Sources */,
+				66C7EB8F2442AD13007B13C5 /* AuthenticationMiddleWare.swift in Sources */,
 				66B177E3240A8E6400BCDF31 /* Profile.swift in Sources */,
 				66EBF0FF23D73DA1007E3202 /* SceneDelegate.swift in Sources */,
 				6670B28423E86C55003E383F /* FeedAuthor.swift in Sources */,

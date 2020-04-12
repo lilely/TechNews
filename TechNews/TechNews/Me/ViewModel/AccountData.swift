@@ -45,6 +45,7 @@ final class AccountData: ObservableObject {
                     if let account = account {
                         print("Login Success!")
                         self.account = account
+                        self.setupAuthentication()
                         do {
                             try Account.query(on: DatabaseManager.default)?
                                             .insert(account)
@@ -92,6 +93,7 @@ final class AccountData: ObservableObject {
                 switch result {
                 case let .success(account):
                     if let account = account {
+                        self.setupAuthentication();
                         print("Register Success!")
                         self.account = account
                         completion(account,nil)
@@ -104,6 +106,24 @@ final class AccountData: ObservableObject {
                 }
             }
     }
+}
+
+extension AccountData {
+    
+    func setupAuthentication() {
+        guard self.account != nil else {
+            return
+        }
+        let autenticationMiddleware = AuthenticateNetworkMiddleware(account: self.account!)
+        TNNetworkMiddlewareManager.default.use(middleWare: autenticationMiddleware)
+    }
+    
+    func unInstallAuthentication() {
+        TNNetworkMiddlewareManager.default.unUse(type: AuthenticateNetworkMiddleware.self)
+    }
+}
+
+extension AccountData {
     
     func isFollowed(author username: String?) -> Bool {
         guard let authorName = username else {

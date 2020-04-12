@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 import SwiftUIRefresh
 
 struct FollowContentView: View {
@@ -41,7 +42,7 @@ struct FollowContentView: View {
                         Text("登录/注册")
                     }.sheet(isPresented: self.$gotoLogin) {
                         LoginContentView().environmentObject(self.accountData)
-                    }
+                    }.onDisappear(perform: refresh)
                 }
             }
             .pullToRefresh(isShowing: $isShowing, onRefresh: {

@@ -9,12 +9,12 @@
 import Alamofire
 import Foundation
 
-class TNNetworkAPIRequest<T: Codable> {
+public class TNNetworkAPIRequest<T: Codable> {
     var url: URL?
     var method: HTTPMethod
     var parameters: [String:Any]?
     var body: [String:Any]?
-    var headers: [String:String]?
+    var headers: [String:String] = [:]
     
     init(_ url: String,_ method: HTTPMethod) {
         self.method = method
@@ -28,7 +28,7 @@ class TNNetworkAPIRequest<T: Codable> {
         guard let finalURL = URL(string:encodingURL) else {
             return
         }
-        self.headers?["Content-Type"] = "application/json"
+        self.headers["Content-Type"] = "application/json"
         self.url = finalURL
     }
     
@@ -43,7 +43,7 @@ class TNNetworkAPIRequest<T: Codable> {
     }
     
     func headers(_ headers:[String:String]) -> Self {
-        self.headers = headers;
+        self.headers = self.headers.merging(headers, uniquingKeysWith: { _, new in new })
         return self
     }
     
@@ -53,6 +53,7 @@ class TNNetworkAPIRequest<T: Codable> {
             completion(.failure(error))
             return
         }
+        TNNetworkMiddlewareManager.default.respondTo(self)
         Alamofire.request(url, method: self.method, parameters: self.body, encoding: JSONEncoding.default, headers: self.headers).validate().responseData { (response) in
             switch response.result {
                 case let .success(body):

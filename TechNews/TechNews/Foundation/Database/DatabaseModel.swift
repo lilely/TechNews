@@ -8,9 +8,7 @@
 
 import PerfectCRUD
 
-protocol DatabaseModel {
-    
-}
+protocol DatabaseModel {}
 
 extension DatabaseModel where Self : Codable {
     
@@ -19,8 +17,4 @@ extension DatabaseModel where Self : Codable {
         return table
     }
     
-}
-
-extension Table {
-
 }
