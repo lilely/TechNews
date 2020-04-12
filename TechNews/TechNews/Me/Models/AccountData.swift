@@ -56,11 +56,8 @@ final class AccountData: ObservableObject {
                             if let followers = followers {
                                 self.followers = followers
                                 do {
-                                    guard let table = Followers.query(on: DatabaseManager.default) else {
-                                        return
-                                    }
-                                    try table.insert([followers])
-                                    
+                                    try Followers.query(on: DatabaseManager.default)?
+                                        .insert([followers])
                                 } catch {
                                     print(error)
                                 }
