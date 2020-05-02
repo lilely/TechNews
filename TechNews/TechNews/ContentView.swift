@@ -31,7 +31,7 @@ struct ContentView: View {
                 Text("搜索")
             }).tag(2)
             
-            RecommendContentView().tabItem({
+            RecommendPageView([RecommendContentView(),RecommendContentView()]).tabItem({
                 Image(systemName: "paperplane")
                 Text("新闻")
             }).tag(3)

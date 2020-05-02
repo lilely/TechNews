@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6612132B245D1050003E175F /* RecommendPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6612132A245D1050003E175F /* RecommendPageControl.swift */; };
 		66180BD7242F801400401B7E /* FollowFeedsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66180BD6242F801400401B7E /* FollowFeedsData.swift */; };
 		664307092437F10A003AFBAD /* PerfectCRUD in Frameworks */ = {isa = PBXBuildFile; productRef = 664307082437F10A003AFBAD /* PerfectCRUD */; };
 		6643070B2437F309003AFBAD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643070A2437F309003AFBAD /* DatabaseManager.swift */; };
@@ -19,6 +20,8 @@
 		6670B28223E86BC9003E383F /* FeedSimpleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B28123E86BC9003E383F /* FeedSimpleData.swift */; };
 		6670B28423E86C55003E383F /* FeedAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B28323E86C55003E383F /* FeedAuthor.swift */; };
 		6670B28623EED9A2003E383F /* FeedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B28523EED9A1003E383F /* FeedDetailView.swift */; };
+		667D7ACA245BA6D8005AD27E /* RecommendPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D7AC9245BA6D8005AD27E /* RecommendPageViewController.swift */; };
+		667D7ACC245BA8D6005AD27E /* RecommendPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667D7ACB245BA8D6005AD27E /* RecommendPageView.swift */; };
 		66B177DD2408A45A00BCDF31 /* AccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177DC2408A45A00BCDF31 /* AccountData.swift */; };
 		66B177DF2408A4FD00BCDF31 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177DE2408A4FD00BCDF31 /* Account.swift */; };
 		66B177E1240A56B300BCDF31 /* TNNetworkAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B177E0240A56B300BCDF31 /* TNNetworkAPIRequest.swift */; };
@@ -63,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6612132A245D1050003E175F /* RecommendPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendPageControl.swift; sourceTree = "<group>"; };
 		66180BD6242F801400401B7E /* FollowFeedsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFeedsData.swift; sourceTree = "<group>"; };
 		6643070A2437F309003AFBAD /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6643070F2438CF4E003AFBAD /* DatabaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseModel.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		6670B28123E86BC9003E383F /* FeedSimpleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSimpleData.swift; sourceTree = "<group>"; };
 		6670B28323E86C55003E383F /* FeedAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAuthor.swift; sourceTree = "<group>"; };
 		6670B28523EED9A1003E383F /* FeedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailView.swift; sourceTree = "<group>"; };
+		667D7AC9245BA6D8005AD27E /* RecommendPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendPageViewController.swift; sourceTree = "<group>"; };
+		667D7ACB245BA8D6005AD27E /* RecommendPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendPageView.swift; sourceTree = "<group>"; };
 		66B177DC2408A45A00BCDF31 /* AccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountData.swift; sourceTree = "<group>"; };
 		66B177DE2408A4FD00BCDF31 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		66B177E0240A56B300BCDF31 /* TNNetworkAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNNetworkAPIRequest.swift; sourceTree = "<group>"; };
@@ -340,6 +346,9 @@
 			isa = PBXGroup;
 			children = (
 				E285B12523D7F68700092814 /* RecommendContentView.swift */,
+				667D7AC9245BA6D8005AD27E /* RecommendPageViewController.swift */,
+				667D7ACB245BA8D6005AD27E /* RecommendPageView.swift */,
+				6612132A245D1050003E175F /* RecommendPageControl.swift */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -481,7 +490,9 @@
 				E285398023D8175100AFC176 /* FeedContentRow.swift in Sources */,
 				66FF103223FC41C800F11397 /* FeedSearchResult.swift in Sources */,
 				E285B12823D7F69800092814 /* AbourtMeContentView.swift in Sources */,
+				667D7ACC245BA8D6005AD27E /* RecommendPageView.swift in Sources */,
 				66EBF0FD23D73DA1007E3202 /* AppDelegate.swift in Sources */,
+				667D7ACA245BA6D8005AD27E /* RecommendPageViewController.swift in Sources */,
 				E285B12423D7F67000092814 /* FollowContentView.swift in Sources */,
 				E285B12023D7ED6B00092814 /* HomeContentView.swift in Sources */,
 				66FF103023FC36B000F11397 /* FeedSearchData.swift in Sources */,
@@ -496,6 +507,7 @@
 				66B177E6240A90F700BCDF31 /* HostProfileView.swift in Sources */,
 				66C7EB8F2442AD13007B13C5 /* AuthenticationMiddleWare.swift in Sources */,
 				66B177E3240A8E6400BCDF31 /* Profile.swift in Sources */,
+				6612132B245D1050003E175F /* RecommendPageControl.swift in Sources */,
 				66EBF0FF23D73DA1007E3202 /* SceneDelegate.swift in Sources */,
 				6670B28423E86C55003E383F /* FeedAuthor.swift in Sources */,
 				66FF103423FD5E9300F11397 /* SearchFeedRow.swift in Sources */,
